@@ -1,0 +1,9 @@
+logging:
+  level:
+    ROOT: ${LOG_LEVEL:WARN}
+    dev.educosta: ${LOG_LEVEL:INFO}
+
+# The dev profile is set as default when running using intelliJ
+spring:
+  profiles:
+    active: dev

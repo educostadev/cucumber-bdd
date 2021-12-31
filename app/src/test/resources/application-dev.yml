@@ -1,0 +1,4 @@
+backing-services:
+  gorest-api:
+    host: https://gorest.co.in
+    access-token: ${GO_REST_ACCESS_TOKEN}
