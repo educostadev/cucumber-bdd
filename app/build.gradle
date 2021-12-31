@@ -96,13 +96,19 @@ task cucumber() {
             throw new GradleException('⚠️  The springProfile is not defied. Use -PspringProfile=<VALUE> in the gradle command line.')
 
         javaexec {
-            environment "spring.profiles.active", System.getProperty("springProfile")
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
+            def defaultArgs = [
                     '--plugin', 'pretty',
                     '--glue', 'dev.educosta', 'src/test/resources/features'
             ]
+            if(project.hasProperty('cucumberArgs')){
+                cucumberArgs = cucumberArgs.split(',')
+                defaultArgs = [cucumberArgs, defaultArgs].flatten()
+            }
+            environment "spring.profiles.active", System.getProperty("springProfile")
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = defaultArgs
+            System.println("🔵  Using args "+args)
         }
     }
 }

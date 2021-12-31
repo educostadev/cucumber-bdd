@@ -1,3 +1,4 @@
+@ignore
 Feature: Test User API functionality
 
   Scenario: Create and read a user

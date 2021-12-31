@@ -27,9 +27,19 @@ git clone git@github.com:educostadev/cucumber-bdd.git
 cd cucumber-bdd
 ```
 
+Run the cucumber scenario annotated with @success.
+```
+./gradlew cucumber -DspringProfile=dev -PcucumberArgs="--tags,@success"
+```
+
+Run the cucumber scenarios and ignore the ones annotated with @ignore
+```
+./gradlew cucumber -DspringProfile=dev -PcucumberArgs="--tags,not @ignore"
+```
+
 Create an account at  [gorest.con.in](https://gorest.co.in) and get your ACCESS TOKEN, so edit the file `app/src/test/resources/application-dev.xml` and add your ACCESS TOKEN into the `access-token` entry or pass the value as environment variable named `GO_REST_ACCESS_TOKEN` when run.
 
-Run the Cucumber scenarios
+Run all cucumber scenarios
 ```
 ./gradlew cucumber -DspringProfile=dev
 ```
